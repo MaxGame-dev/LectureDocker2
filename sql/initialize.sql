@@ -3,6 +3,7 @@ GRANT ALL PRIVILEGES ON * . * TO 'data_user'@'localhost';
 
 CREATE USER IF NOT EXISTS 'data_user'@'%' IDENTIFIED BY 'data';
 GRANT ALL PRIVILEGES ON * . * TO 'data_user'@'%';
+alter user 'data_user'@'%' identified with mysql_native_password by 'data';
 
 DROP DATABASE IF EXISTS lecture_db;
 CREATE DATABASE IF NOT EXISTS lecture_db;
