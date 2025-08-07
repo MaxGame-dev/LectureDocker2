@@ -27,6 +27,7 @@ services:
   mysql:
     build: ./mysql
     volumes:
+      - ./sql:/root/sql
       - db_data:/var/lib/mysql
     restart: always
     environment:
