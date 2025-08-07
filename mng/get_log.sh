@@ -1,0 +1,1 @@
+scp -i ~/.ssh/test_rsa php:/var/log/apache2/php_access.log /storage

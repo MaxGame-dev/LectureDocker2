@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+  openssh:
+    image: linuxserver/openssh-server:version-9.6_p1-r0
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Tokyo
+      - PASSWORD_ACCESS=true 
+      - USER_PASSWORD=passward
+      - USER_NAME=test_user
+      - LOG_STDOUT= #optional
+    ports:
+      - 2222:2222
+    restart: unless-stopped
+
+  mng:
+    build: ./mng
+    volumes:
+      - ./storage:/storage
+      - ./.ssh/test_rsa:/root/.ssh/test_rsa
+      - ./.ssh/test_rsa.pub:/root/.ssh/authorized_keys
+    ports:
+      - '10022:22'
+
+  mysql:
+    build: ./mysql
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'p@ssword'
+
+  php:
+    build: ./php
+    volumes:
+      - ./htdocs:/var/www/html
+      - ./.ssh/test_rsa.pub:/root/.ssh/authorized_keys
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+
+volumes:
+    db_data: {}
