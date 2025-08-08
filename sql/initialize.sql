@@ -42,5 +42,6 @@ CREATE TABLE IF NOT EXISTS gacha_histories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     history_id INT,
     gacha_id INT,
-    item_id INT
+    item_id INT,
+    INDEX idx_history_id (history_id) 
 );
