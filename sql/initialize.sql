@@ -13,15 +13,15 @@ use lecture_db;
 DROP TABLE IF EXISTS items;
 CREATE TABLE IF NOT EXISTS items (
     item_id INT PRIMARY KEY,
-    item_name VARCHAR(255)
+    item_name VARCHAR(255),
+    item_image VARCHAR(255)
 );
 
-insert into items (item_id, item_name) values (1, '神レアアイテム');
-insert into items (item_id, item_name) values (2, '超レアアイテム');
-insert into items (item_id, item_name) values (3, 'レアアイテム');
-insert into items (item_id, item_name) values (4, '普通のアイテム');
-insert into items (item_id, item_name) values (5, 'ガラクタ');
-
+insert into items (item_id, item_name, item_image) values (1, '神レアアイテム', 'f048.png');
+insert into items (item_id, item_name, item_image) values (2, '超レアアイテム', 'f042.png');
+insert into items (item_id, item_name, item_image) values (3, 'レアアイテム', 'f041.png');
+insert into items (item_id, item_name, item_image) values (4, '普通のアイテム', 'f040.png');
+insert into items (item_id, item_name, item_image) values (5, 'ガラクタ', 'f039.png');
 
 DROP TABLE IF EXISTS gacha_items;
 CREATE TABLE IF NOT EXISTS gacha_items (
