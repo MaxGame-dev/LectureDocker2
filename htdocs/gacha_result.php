@@ -1,11 +1,6 @@
 <?php
 // データベースへ接続するために必要な情報
-// ホストはDBコンテナ
-$host = 'mysql';
-// mysql接続用のユーザー
-$username = 'data_user';
-$password = 'data';
-$database = 'lecture_db';
+require 'db_config.php'; 
 try {
     // PDOでMySQLに接続
     $pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $username, $password);
